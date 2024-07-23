@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
+	remote "github.com/liangboceo/nacos-viper-remote"
 	"github.com/spf13/viper"
-	remote "github.com/yoyofxteam/nacos-viper-remote"
 	"os"
 	"os/signal"
 	"syscall"
@@ -16,7 +16,7 @@ func main() {
 	runtime_viper.SetConfigFile("./example_config.yaml")
 	_ = runtime_viper.ReadInConfig()
 	var option *remote.Option
-	_ = runtime_viper.Sub("yoyogo.cloud.discovery.metadata").Unmarshal(&option)
+	_ = runtime_viper.Sub("yuanboot.cloud.discovery.metadata").Unmarshal(&option)
 
 	remote.SetOptions(option)
 
@@ -43,20 +43,20 @@ func main() {
 		go func(rc <-chan bool) {
 			for {
 				<-rc
-				fmt.Printf("remote async: %s", config_viper.GetString("yoyogo.application.name"))
+				fmt.Printf("remote async: %s", config_viper.GetString("yuanboot.application.name"))
 			}
 		}(respChan)
 
 	}
 
-	appName := config_viper.GetString("yoyogo.application.name")
+	appName := config_viper.GetString("yuanboot.application.name")
 
 	fmt.Println(appName)
 
 	go func() {
 		for {
 			time.Sleep(time.Second * 30) // delay after each request
-			appName = config_viper.GetString("yoyogo.application.name")
+			appName = config_viper.GetString("yuanboot.application.name")
 			fmt.Println("sync:" + appName)
 		}
 	}()

@@ -1,6 +1,6 @@
-yoyogo:
+yuanboot:
   application:
-    name: yoyogo_demo_dev
+    name: yuanboot_demo_dev
   cloud:
     discovery:
       cache:

@@ -14,7 +14,7 @@ type ViperRemoteProvider struct {
 func NewRemoteProvider(configType string) *ViperRemoteProvider {
 	return &ViperRemoteProvider{
 		configType: configType,
-		configSet:  "yoyogo.cloud.discovery.metadata"}
+		configSet:  "yuanboot.cloud.discovery.metadata"}
 }
 
 func (provider *ViperRemoteProvider) GetProvider(runtimeViper *viper.Viper) *viper.Viper {

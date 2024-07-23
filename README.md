@@ -28,7 +28,7 @@ if err == nil {
     go func(rc <-chan bool) {
         for {
             <-rc
-            fmt.Printf("remote async: %s", config_viper.GetString("yoyogo.application.name"))
+            fmt.Printf("remote async: %s", config_viper.GetString("yuanboot.application.name"))
         }
     }(respChan)
 }
@@ -36,7 +36,7 @@ if err == nil {
 go func() {
     for {
         time.Sleep(time.Second * 30) // delay after each request
-        appName = config_viper.GetString("yoyogo.application.name")
+        appName = config_viper.GetString("yuanboot.application.name")
         fmt.Println("sync:" + appName)
     }
 }()
